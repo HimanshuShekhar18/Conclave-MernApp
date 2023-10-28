@@ -1,0 +1,29 @@
+.buttonstyle{
+      background-color: #0057FF;
+      color: #fff;
+    
+      padding: 10px 20px; 
+        /* 10px" represents the padding for the top and bottom of the element. "20px" represents the padding for the left and right of the element. */
+
+      border: none;
+      border-radius: 20px;
+      font-weight: bold;
+      font-Size: 18px; 
+      display: flex;
+      align-items: center; 
+
+      /* button ko center mein lane ke liye */
+      /* top bottom left right */
+      margin: 0 auto; 
+      margin-bottom: 10px;
+
+      cursor: pointer;
+
+      transition: all 0.3s ease-in-out;
+
+}
+
+/* note dhyan dena buttonstyle honga button nahi jo container use karonge wahi same container ke naam se hovering honga */
+.buttonstyle:hover{
+      background: #014a9c;
+}

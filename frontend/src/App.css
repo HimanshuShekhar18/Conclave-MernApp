@@ -1,0 +1,12 @@
+body{
+      background-color: #121212;
+      /* do make to copy the font link from google font and paste it in index.html to use on the web */
+      font-family: 'Nunito', sans-serif;
+      color: #fff;
+}
+
+.container{
+      width: 1200px;
+      max-width: 90%;
+      margin: 0 auto;
+}
