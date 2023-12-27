@@ -5,7 +5,7 @@ import styles from './Home.module.css';
 import { Card } from '../../components/shared/Card/Card';
 import { Button } from '../../components/shared/Button/Button';
 
-export const Home = () => {
+ const Home = () => {
 
   const signInLinkStyle = {
      color: '#0077ff',
@@ -15,10 +15,10 @@ export const Home = () => {
   };
 
   // for navigation
-  const navigate = useNavigate();
+const navigate = useNavigate();
 
 function startRegister(){
-    navigate('/register');  // redirect kardo register page pe or register component pe
+    navigate('/authenticate');  // redirect kardo authenticate page pe or authenticate component pe
 }
 
   return (
@@ -38,9 +38,11 @@ function startRegister(){
       <span className={styles.hasInvite}> Have an invite link?</span>
       
       {/* parent component ke andar child component so styling dena hain to inline styling karna padega */}
-    <Link style={signInLinkStyle} to="/login"> Sign in</Link>
+    <Link style={signInLinkStyle} to="/authenticate"> Sign in</Link>
     </div>
       </Card>
     </div>
   );
 };
+
+export default Home;

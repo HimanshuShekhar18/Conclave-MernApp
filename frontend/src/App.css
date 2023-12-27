@@ -1,5 +1,8 @@
 body{
-      background-color: #121212;
+      background-image: url('../public/images/conclave.png');
+      background-size: 1800px;
+      background-position: center;
+      background-position-x: bottom;
       /* do make to copy the font link from google font and paste it in index.html to use on the web */
       font-family: 'Nunito', sans-serif;
       color: #fff;

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 // default import of module
 import styles from './Navigation.module.css'
 
-export const Navigation = () => {
+const Navigation = () => {
   
   // inline styling object creation
   // object hain to as a string dena honga
@@ -32,3 +32,5 @@ export const Navigation = () => {
     </nav>
   );
 }; 
+
+export default Navigation;

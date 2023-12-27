@@ -1,0 +1,53 @@
+.cardWrapper{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 200px;
+}
+
+/* In abovr code:
+
+display: flex;: Turns the element into a flex container.
+align-items: center;: Aligns the items along the cross-axis (vertically centered in this case).
+justify-content: center;: Aligns the items along the main axis (horizontally centered in this case).
+margin-top: 200px;: Adds a top margin of 200 pixels to the container.
+
+*/
+
+.buttonWrapper{
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+
+}
+
+.tabButton{
+      width: 60px;
+      height: 60px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+
+}
+
+.tabButton:last-child{
+      margin-left: 20px;
+}
+
+.active{
+      background: #0077FF;
+}
+
+.actionButtonWrap {
+      margin-top: 40px;
+  }
+
+.bottomParagraph {
+      color: #C4C5C5;
+      width: 70%;
+      margin: auto;
+      margin-top: 20px;
+}
