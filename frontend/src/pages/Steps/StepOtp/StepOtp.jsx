@@ -4,7 +4,6 @@ import { Button } from "../../../components/shared/Button/Button";
 import styles from './StepOtp.module.css';
 import { Textinput } from "../../../components/shared/Textinput/Textinput";
 import { useState } from "react";
-
 import { verifyOtp } from '../../../http';
 import { useSelector } from 'react-redux';
 import { setAuth } from '../../../store/authSlice';
@@ -25,7 +24,6 @@ export const StepOtp = () => {
         console.log(err);
     }
 }
-
   return (
     <div className={styles.cardWrapper}>
       <Card title="Enter the code we just texted you" icon="lock">

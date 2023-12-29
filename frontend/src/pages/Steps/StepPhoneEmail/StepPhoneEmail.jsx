@@ -19,10 +19,10 @@ export const StepPhoneEmail = ({ onClick }) => {
         <div>
         <div className={styles.buttonWrapper}>
           <button className={`${styles.tabButton} ${type==='phone'?styles.active:''}`} onClick={() => setType("phone")}>
-            <img src="./images/phone.png"></img> 
+            <img src="./images/phone.png" alt="phone"></img> 
           </button>
           <button className={`${styles.tabButton} ${type==='email'?styles.active:''}`} onClick={() => setType("email")}>
-            <img src="/images/email.png"></img>
+            <img src="/images/email.png" alt="email"></img>
           </button>
         </div> 
         <Component onClick={onClick} />

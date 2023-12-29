@@ -9,6 +9,8 @@ import { useDispatch } from "react-redux"; // hook to send data received from se
 import { setOtp } from "../../../../store/authSlice";
 
 export const Phone = ({ onClick }) => {
+
+
   // state banate hai
   const [phoneNumber, setPhoneNumber] = useState("");
 
@@ -26,13 +28,24 @@ export const Phone = ({ onClick }) => {
     onClick();
   }
 
+  const handleKeyDown = (e) => {
+    // Allow only numeric and control keys
+    if (!((e.key >= '0' && e.key <= '9') || e.key === 'Backspace' || e.key === 'Delete')) {
+        e.preventDefault();
+    }
+};
+
   return (
     <div>
       <Card title="Enter your Phone Number" icon="Telephone">
         <Textinput
+          placeholder="Enter your phone number"
           value={phoneNumber}
           onChange={(e) => setPhoneNumber(e.target.value)}
           onClear={() => setPhoneNumber("")}
+          pattern="[0-9]*" 
+          inputMode="numeric"
+          onKeyDown={handleKeyDown}
         />
 
   

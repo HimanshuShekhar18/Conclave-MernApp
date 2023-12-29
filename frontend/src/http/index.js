@@ -6,6 +6,7 @@ import axios from 'axios';
 // instance of axios
 const api = axios.create({
     baseURL: 'http://localhost:5500',
+    withCredentials: true,
     headers: { 
         'Content-type': 'application/json',
         Accept: 'application/json',   // ye server ko bata rahe hain hum kis type ka data accept kar sakte hain
@@ -16,4 +17,5 @@ const api = axios.create({
 // api.post --> returns promises
 export const sendOtp = (data) => api.post('/api/send-otp', data);  // export karo; hamare frontend ke components mein hum use karenge
 export const verifyOtp = (data) => api.post('/api/verify-otp', data);
+export const activate = (data) => api.post('/api/activate', data);
 export default api;

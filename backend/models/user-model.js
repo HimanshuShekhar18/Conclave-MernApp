@@ -7,6 +7,8 @@ const Schema = mongoose.Schema;  // Schema ek class hain
 const userSchema = new Schema(
     {
         phone: { type: String, required: true },
+        name: { type: String, required: false },   // jab pehli baar user create kiya to 2nd step mein name chahiye
+        avatar: { type: String, required: false }, // why string? bcoz: file ka path store karenge
         activated: { type: Boolean, required: false, default: false },
     },
     {

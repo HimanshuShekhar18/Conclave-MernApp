@@ -31,7 +31,7 @@ function startRegister(){
         gives purpose and meaning to our lives   
        </p >
     {/* event listener click hote hi "startRegister" method ko call karenga */}
-    <Button onClick = {startRegister} text="Get your Username" icon = "Arrow">
+    <Button onClick = {startRegister} text="Let's Go" icon = "Arrow">
 
     </Button>
     <div className={styles.signWrapper}>

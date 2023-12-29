@@ -74,15 +74,28 @@ class AuthController {
       activated: false,
     });
 
+    await tokenService.storeRefreshToken(refreshToken, user._id);
+
     // refreshToken ko cookie se attach karo, har ek request pe cookie automatically attach ho jati hai request ko; isse hame manually har baar har request pe refreshToken send karne ki jarurat nahi hongi
-    // accessToken ko hamare local storage mein store karenge
     res.cookie("refreshToken", refreshToken, {
       maxAge: 1000 * 60 * 60 * 24 * 30, // 30 days tak cookie valid rahi rahengi
       httpOnly: true, // client pe jo javascript hain wo cookie ko read nahi kar payega, only server read kar payenga
     });
 
+    /*
+       accessToken ko hamare local storage mein store karne ka plan tha,
+       but wo utna secure nahi hain;
+       so we will attach cookies to accessToken
+    */
+    res.cookie("accessToken", accessToken, {
+      maxAge: 1000 * 60 * 60 * 24 * 30, // 30 days tak cookie valid rahi rahengi
+      httpOnly: true, // client pe jo javascript hain wo cookie ko read nahi kar payega, only server read kar payenga
+    });
+
     const userDto = new UserDto(user);
-    res.json({ accessToken, user: userDto });
+    // res.json({ accessToken, user: userDto });
+    res.json({user: userDto, auth: true });
+
   }
 }
 
