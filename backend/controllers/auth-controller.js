@@ -48,7 +48,7 @@ class AuthController {
 
     // Date.now() ia a number, but expires is a string so add '+' infront to convert explicitly to number
     if (Date.now() > +expires) {
-      Window.alert("OTP Expired");
+      window.alert("OTP Expired");
       return res.status(400).json({ message: "OTP expired!" });
     }
 
@@ -98,11 +98,12 @@ class AuthController {
     res.json({ user: userDto, auth: true });
   }
 
+
+
   async refresh(req, res) {
     // 1) get refresh token from cookie
     const { refreshToken: refreshTokenFromCookie } = req.cookies;
-
-    
+  
 
     // 2) check if token is valid
     let userData;
