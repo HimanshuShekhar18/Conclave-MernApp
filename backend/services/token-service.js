@@ -5,7 +5,7 @@ const refreshModel = require('../models/refresh-model');
 class TokenService {
     generateTokens(payload) {
         const accessToken = jwt.sign(payload, accessTokenSecret, {
-            expiresIn: '1h',
+            expiresIn: '1m',   // reducing expiry time of accessToken
         });
         const refreshToken = jwt.sign(payload, refreshTokenSecret, {
             expiresIn: '1y',
@@ -27,6 +27,30 @@ class TokenService {
     async verifyAccessToken(token) {
         return jwt.verify(token, accessTokenSecret);
     }
+
+    async verifyRefreshToken(token) {
+        return jwt.verify(token, refreshTokenSecret);
+    }
+
+    async findRefreshToken(userId, refreshToken) {
+        return await refreshModel.findOne({     // findOne method call karna hain mongoose ki
+            userId: userId,
+            token: refreshToken,
+        });
+    }
+
+    async updateRefreshToken(userId, refreshToken) {
+        return await refreshModel.updateOne(
+            { userId: userId },
+            { token: refreshToken }
+        );
+    }
+
+
+    async removeToken(refreshToken) {
+        return await refreshModel.deleteOne({ token: refreshToken });
+    }
+
 }
 
 module.exports = new TokenService();

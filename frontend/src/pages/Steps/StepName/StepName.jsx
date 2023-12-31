@@ -14,6 +14,7 @@ const StepName = ({ onNext }) => {
 
   function nextStep() {
     if (!fullname) {
+      window.alert("Please Enter your FullName");
       return;
     }
     console.log(fullname);

@@ -19,6 +19,11 @@ export const Phone = ({ onClick }) => {
   async function submit() {
     // 2) if you are using await then fucntion shoule be async
 
+    if (!phoneNumber) {
+      window.alert("Please enter a phone number");
+      return;
+    }
+
     //server request
     console.log(phoneNumber);
     const { data } = await sendOtp({ phone: phoneNumber });

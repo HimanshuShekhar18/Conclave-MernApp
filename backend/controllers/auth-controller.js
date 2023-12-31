@@ -48,6 +48,7 @@ class AuthController {
 
     // Date.now() ia a number, but expires is a string so add '+' infront to convert explicitly to number
     if (Date.now() > +expires) {
+      Window.alert("OTP Expired");
       return res.status(400).json({ message: "OTP expired!" });
     }
 
@@ -94,9 +95,90 @@ class AuthController {
 
     const userDto = new UserDto(user);
     // res.json({ accessToken, user: userDto });
-    res.json({user: userDto, auth: true });
+    res.json({ user: userDto, auth: true });
+  }
+
+  async refresh(req, res) {
+    // 1) get refresh token from cookie
+    const { refreshToken: refreshTokenFromCookie } = req.cookies;
+
+    
+
+    // 2) check if token is valid
+    let userData;
+    try {
+      userData = await tokenService.verifyRefreshToken(refreshTokenFromCookie);
+      // userData consists of _id(userId), activated, iat, exp
+      /* _id(userId) jo ye return kar raha hain wo database(tokens collection) mein userId ke naam se store hain 
+        jo ki database ka (users collection) ke _id ke equal hain
+      */
+     console.log(userData);
+    } catch (err) {
+      console.log("hello");
+      return res.status(401).json({ message: "Invalid Token" });
+    }
+
+    // 3) Check if token is in DB
+    try {
+      const token = await tokenService.findRefreshToken(
+        userData._id,
+        refreshTokenFromCookie
+      );
+      console.log(token, "hello");
+      if (!token) {
+        return res.status(401).json({ message: "Invalid token" }); // 401 --> unauthorized
+      }
+    } catch (err) {
+      return res.status(500).json({ message: "Internal error" }); // DB ke andar agar aata hain
+    }
+
+    // 4) check if valid user; user kya DB mein present hain??
+    const user = await userService.findUser({ _id: userData._id });
+    if (!user) {
+      return res.status(404).json({ message: "No user" });
+    }
+    console.log(user);
+
+    // 5) Generate new tokens
+    const { refreshToken, accessToken } = tokenService.generateTokens({
+      _id: userData._id,
+    });
+
+    // 6) Update refresh token in the DATABASE
+    try {
+      await tokenService.updateRefreshToken(userData._id, refreshToken);
+    } catch (err) {
+      return res.status(500).json({ message: "Internal error" });
+    }
+
+    // 7) put in cookies
+    res.cookie("refreshToken", refreshToken, {
+      maxAge: 1000 * 60 * 60 * 24 * 30,
+      httpOnly: true,
+    });
+
+    res.cookie("accessToken", accessToken, {
+      maxAge: 1000 * 60 * 60 * 24 * 30,
+      httpOnly: true,
+    });
+
+    // 8) send response
+    const userDto = new UserDto(user);
+    res.json({ user: userDto, auth: true });
 
   }
+
+
+  async logout(req, res) {
+    const { refreshToken } = req.cookies;
+    // delete refresh token from db
+    await tokenService.removeToken(refreshToken);
+    // delete cookies
+    res.clearCookie('refreshToken');
+    res.clearCookie('accessToken');
+    res.json({ user: null, auth: false });
+}
+
 }
 
 module.exports = new AuthController();

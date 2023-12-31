@@ -16,6 +16,12 @@ export const StepOtp = () => {
   const { phone, hash } = useSelector((state) => state.auth.otp);   // data store se fetch karne ke liye
 
   async function submit() {
+
+    if (!otp) {
+      window.alert("Please enter the OTP");
+      return;
+    }
+
     try {
         const { data } = await verifyOtp({ otp, phone, hash });  // data mein accessToken receive hua hain
         console.log(data);

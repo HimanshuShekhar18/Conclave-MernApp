@@ -7,10 +7,13 @@ export const Card = ({title, icon, children}) => {
       <div className={styles.card}>   
     
       <div className={styles.headerWrapper}>
-         <img src={`/images/${icon}.png`} width={37.5} height={30} alt='Emoji'/>
-         <h1 className={styles.heading}>{title}</h1>
+        
+         {icon && <img src={`/images/${icon}.png`} width={37.5} height={30} alt='Emoji'/>}  
+         {title && <h1 className={styles.heading}>{title}</h1>}
       </div>
       {children}
     </div>
   )
 }
+
+// check laga rahe agar icon and title pass hua tabhi icon and title show karna 

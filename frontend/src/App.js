@@ -8,8 +8,16 @@ import Rooms from "./pages/Rooms/Rooms";
 
 import { useSelector } from "react-redux";
 
+import { useLoadingWithRefresh } from './hooks/useLoadingWithRefresh';
+
+import Loader from './components/shared/Loader/Loader';
+
 function App() {
-  return (
+
+  // call refresh endpoint
+  const { loading } = useLoadingWithRefresh();   // destructoring the loading object
+
+  return loading ? (<Loader message="Loading, please wait.." />) : (
     <Router>
       <Navigation />
       <Routes>
