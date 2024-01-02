@@ -27,10 +27,8 @@ const Navigation = () => {
     marginLeft: '10px',
   }
 
-
   const dispatch = useDispatch();
   const { isAuth, user } = useSelector((state) => state.auth);
-
 
     async function logoutUser() {
         try {
@@ -40,8 +38,6 @@ const Navigation = () => {
             console.log(err);
         }
     }
-
-
 
   return (
     <nav className={`${styles.navbar} container`}>
@@ -69,7 +65,8 @@ const Navigation = () => {
                         className={styles.logoutButton}
                         onClick={logoutUser}
                     >
-                        <img src="/images/logout.png" alt="logout" />
+                        <img src="/images/logout.png" width="53"
+                            height="53" alt="logout" />
                     </button>
                 </div>
             )}

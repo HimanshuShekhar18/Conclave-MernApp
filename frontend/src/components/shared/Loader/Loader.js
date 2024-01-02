@@ -6,7 +6,6 @@ const Loader = ({ message }) => {
     return (
         <div className="cardWrapper">
             <Card>
-             
                 <svg
                     className={styles.spinner}
                     width="42"
@@ -26,11 +25,10 @@ const Loader = ({ message }) => {
                         fill="#5453E0"
                     />
                 </svg>
-                
+
                 <span className={styles.message}>{message}</span>
             </Card>
         </div>
     );
 };
-
 export default Loader;

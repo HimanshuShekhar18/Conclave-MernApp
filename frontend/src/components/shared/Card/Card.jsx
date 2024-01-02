@@ -16,4 +16,4 @@ export const Card = ({title, icon, children}) => {
   )
 }
 
-// check laga rahe agar icon and title pass hua tabhi icon and title show karna 
+// {} --> check laga rahe agar icon and title pass hua tabhi icon and title show karna 

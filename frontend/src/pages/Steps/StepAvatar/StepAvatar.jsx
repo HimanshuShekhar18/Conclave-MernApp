@@ -19,6 +19,8 @@ const StepAvatar = ({ onNext }) => {
 
     const [loading, setLoading] = useState(false);
 
+    
+
     function captureImage(e) {
         const file = e.target.files[0];  // capture that photo in "file"
 

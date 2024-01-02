@@ -8,6 +8,14 @@ body{
       color: #fff;
 }
 
+/* GLOBAL */
+button {
+      border: none;
+      outline: none;
+      cursor: pointer;
+      font-weight: bold;
+  }
+
 .container{
       width: 1200px;
       max-width: 90%;
@@ -21,4 +29,5 @@ body{
       align-items: center;
       justify-content: center;
       margin-top: 200px;
+      min-height: calc(100vh - 140px);
 }

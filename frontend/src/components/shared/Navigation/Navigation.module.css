@@ -6,11 +6,9 @@
   }
   
   .logoutButton {
-      background: white;
+      background: none;
       cursor: pointer;
-      width:80px;
-      height:40px;  
-      border-radius: 20px;
+      margin-top: -3px;
   }
   
   .navRight {
