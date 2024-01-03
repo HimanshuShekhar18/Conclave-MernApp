@@ -5,6 +5,8 @@ import Navigation from "./components/shared/Navigation/Navigation";
 import Authenticate from "./pages/Authenticate/Authenticate";
 import Activation from "./pages/Activation/Activation";
 import Rooms from "./pages/Rooms/Rooms";
+import Room from './pages/Room/Room';
+
 
 import { useSelector } from "react-redux";
 
@@ -25,6 +27,7 @@ function App() {
         <Route path="/authenticate" element={<GuestRoute />} />
         <Route path="/activate" element={<SemiProtectedRoute />} />
         <Route path="/rooms" element={<ProtectedRoute />} />
+        <Route path="/room/:id" element={<Room />} />   
       </Routes>
     </Router>
   );

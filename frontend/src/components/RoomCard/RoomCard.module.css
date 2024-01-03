@@ -11,6 +11,16 @@
       position: relative;
       margin: 20px 0;
   }
+
+  .singleSpeaker .avatars img {
+
+    position: initial;
+
+  }
+
+  .singleSpeaker .names {
+    margin-left: 20px;
+}
   
   .avatars img {
       width: 40px;

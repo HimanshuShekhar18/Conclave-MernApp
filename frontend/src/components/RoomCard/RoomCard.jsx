@@ -3,6 +3,8 @@ import styles from './RoomCard.module.css';
 import { useNavigate } from 'react-router-dom';
 
 const RoomCard = ({ room }) => {
+
+    // navigate hook
     const navigate = useNavigate();;
     return (
         <div
@@ -15,7 +17,7 @@ const RoomCard = ({ room }) => {
             
             
             <div
-                className={styles.speakers}
+                className={`${styles.speakers} ${room.speakers.length === 1? styles.singleSpeaker : ''}`}
             >
 
                 <div className={styles.avatars}>
@@ -45,7 +47,7 @@ const RoomCard = ({ room }) => {
 
             
             <div className={styles.peopleCount}>
-                <span>{room.totalPeople}</span>
+                <span>{room.speakers.length}</span>
                 <img src="/images/user-icon.png" alt="user-icon" />
             </div>
 
