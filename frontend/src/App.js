@@ -28,6 +28,7 @@ function App() {
         <Route path="/authenticate" element={<GuestRoute />} />
         <Route path="/invitation" element={<GuestRoute2 />} />
         <Route path="/activate" element={<SemiProtectedRoute />} />
+        <Route path="/inviteactivate" element={<SemiProtectedRoute2 />} />
         <Route path="/rooms" element={<ProtectedRoute />} />
         <Route path="/room/:id" element={<Room />} />   
       </Routes>
@@ -45,8 +46,8 @@ const GuestRoute = () => {
 const GuestRoute2 = () => {
 
   const { isAuth } = useSelector((state) => state.auth);  // from auth-slice
-
-  return isAuth ? <Invitation /> : <Authenticate />;
+  
+  return isAuth ? <Navigate to="/inviteactivate"/>: <Authenticate />;
 };
 
 const SemiProtectedRoute = () => {
@@ -61,6 +62,23 @@ const SemiProtectedRoute = () => {
         <Activation />
       ) : (
         <Navigate to = "/rooms"/>
+      )}
+    </>
+  );
+};
+
+const SemiProtectedRoute2 = () => {
+  const { user, isAuth } = useSelector((state) => state.auth);
+
+
+  return (
+    <>
+      {!isAuth ? (
+        <Navigate to="/" />
+      ) : !user.activated ? (
+        <Activation/>
+      ) : (
+        <Invitation/>
       )}
     </>
   );
