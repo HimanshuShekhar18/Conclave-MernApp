@@ -19,11 +19,13 @@
     "jimp": "^0.22.10",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.0.3",
+    "socket.io": "^4.7.3",
     "twilio": "^4.20.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
+    "@types/mongodb": "^4.0.7",
     "nodemon": "^3.0.2"
   }
 }

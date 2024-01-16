@@ -35,7 +35,7 @@ function startRegister(){
 
     </Button>
     <div className={styles.signWrapper}>
-      <span className={styles.hasInvite}> Have an invite link?</span>
+      <Link className={styles.hasInvite} to="/invitation" > Have an invite link?</Link>
       
       {/* parent component ke andar child component so styling dena hain to inline styling karna padega */}
     <Link style={signInLinkStyle} to="/authenticate"> Sign in</Link>

@@ -8,6 +8,6 @@ import { Provider } from 'react-redux';
 
 const root = document.getElementById('root');
 const rootElement = ReactDOM.createRoot(root);
-rootElement.render(<React.StrictMode><Provider store ={store}><App /></Provider></React.StrictMode>);
+rootElement.render(<Provider store ={store}><App /></Provider>);
 // pass the store as a prop:
 reportWebVitals();

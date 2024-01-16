@@ -90,15 +90,15 @@ class RoomsController {
 
    Solution: use getter function in user-model.js
 */
-
           return res.json(allRooms);
       }
 
+
       async show(req, res) {
           const room = await roomService.getRoom(req.params.roomId);
+          console.log(room,'show room');
           return res.json(room);
       }
 }
-
 // a singleton instances
 module.exports = new RoomsController();

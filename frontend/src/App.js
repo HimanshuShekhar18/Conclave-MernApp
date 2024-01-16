@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-d
 import Home from "./pages/Home/Home";
 import Navigation from "./components/shared/Navigation/Navigation";
 import Authenticate from "./pages/Authenticate/Authenticate";
+import {Invitation} from "./pages/Invitation/Invitation";
 import Activation from "./pages/Activation/Activation";
 import Rooms from "./pages/Rooms/Rooms";
 import Room from './pages/Room/Room';
@@ -25,6 +26,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/authenticate" element={<GuestRoute />} />
+        <Route path="/invitation" element={<GuestRoute2 />} />
         <Route path="/activate" element={<SemiProtectedRoute />} />
         <Route path="/rooms" element={<ProtectedRoute />} />
         <Route path="/room/:id" element={<Room />} />   
@@ -38,6 +40,13 @@ const GuestRoute = () => {
   const { isAuth } = useSelector((state) => state.auth);  // from auth-slice
 
   return isAuth ? <Navigate to="/rooms" /> : <Authenticate />;
+};
+
+const GuestRoute2 = () => {
+
+  const { isAuth } = useSelector((state) => state.auth);  // from auth-slice
+
+  return isAuth ? <Invitation /> : <Authenticate />;
 };
 
 const SemiProtectedRoute = () => {
