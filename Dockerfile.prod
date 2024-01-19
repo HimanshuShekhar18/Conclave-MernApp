@@ -1,0 +1,30 @@
+# aliasing as build
+FROM node:18 as build
+WORKDIR /frontend
+COPY ./frontend/package*.json ./
+RUN npm install
+COPY ./frontend/ ./
+RUN npm run build
+
+
+FROM ubuntu:18.04
+RUN apt update -y \
+    && apt install nginx curl vim -y \
+    && apt-get install software-properties-common -y \
+    # to install ssl certificates certbot required
+    && add-apt-repository ppa:certbot/certbot -y \
+    && apt-get update -y \
+    && apt-get install python-certbot-nginx -y \
+    && apt-get clean
+
+# mentioning for documentation purpose only
+EXPOSE 80
+STOPSIGNAL SIGTERM
+
+# copying build folder of react into docker
+COPY --from=build /frontend/build /var/www/html
+
+# starting nginx so that we can send our http request at port 80
+CMD ["nginx", "-g", "daemon off;"]
+
+# we are using nginx so that we can set the domain name

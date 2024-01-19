@@ -1,0 +1,14 @@
+# base image
+FROM node:18 
+
+# or aage source code ke sath extend karke complete image banayege
+WORKDIR /frontend
+
+COPY ./frontend/package*.json ./
+
+RUN npm install
+
+COPY ./frontend/ ./
+
+# command to run when container starts
+CMD [ "npm", "run", "start" ]
