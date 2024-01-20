@@ -17,6 +17,9 @@ import Loader from './components/shared/Loader/Loader';
 
 function App() {
 
+  
+
+
   // call refresh endpoint
   const { loading } = useLoadingWithRefresh();   // destructoring the loading object
 
