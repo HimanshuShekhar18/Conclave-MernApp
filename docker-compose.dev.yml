@@ -23,7 +23,7 @@ services:
     ports:
       - "5500:5500"
     env_file:
-      - ./backend/.env
+      - ./backend/.env.dev
     volumes:
       - ./backend:/backend
       # # node_modules ko jhor do
