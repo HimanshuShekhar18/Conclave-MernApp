@@ -8,5 +8,5 @@ Database --> MongoDB
 Webrtc --> for Real-Time Communication peer-to-peer (without server) possible through Webrtc 
 Two Browsers will be able to transfer voice stream 
 Containerized with the help of docker and deploy on live server
-![image](https://github.com/HimanshuShekhar18/Conclave-MernApp/assets/96346919/7dc41f9b-e9d9-4932-a03f-348940133dd8)
+
 
