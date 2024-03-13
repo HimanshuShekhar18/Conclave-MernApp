@@ -1,7 +1,9 @@
-WebRTC Real-time voice chat MERN Complete project
-Drop-in-AudioChat
+WebRTC Real-time Drop-in-AudioChat MERN Complete project
+
 Tech Stack:
+
 UI Design(Figma) 
+
 Frontend --> React, Redux( For State Management ), Core CSS (for Styling) 
 
 Backend --> ExpressJS/NodeJS ( for handling API's )
